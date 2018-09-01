@@ -12,8 +12,8 @@
 ###简单使用
 ```
 //初始化方法
-count:确定验证码的数量 最小1位  最多6位，可以做修改
-with:codeField的宽度
+count:确定验证码的数量 最小1位  最多6位，可以做修改 
+with:codeField的宽度  宽度会有默认值 不得小于30
 
 let testView = YMCodeView.init(count: 6, with: 30.0)
 
@@ -23,7 +23,6 @@ testView.delegate = self
 //代理方法
 func codeView(_ inputString: String) {
         print(inputString)
-        
  }
 
 ```
