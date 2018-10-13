@@ -26,3 +26,5 @@ func codeView(_ inputString: String) {
  }
 
 ```
+
+1. 对存在卡顿现象的优化
