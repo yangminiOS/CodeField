@@ -14,6 +14,7 @@
 		3D2AAF7920B6646A00A907DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2AAF7720B6646A00A907DC /* LaunchScreen.storyboard */; };
 		3D2AAF8120B6649400A907DC /* YMYCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2AAF8020B6649400A907DC /* YMYCodeTextField.swift */; };
 		3D2AAF8320B66B0900A907DC /* YMYCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2AAF8220B66B0900A907DC /* YMYCodeView.swift */; };
+		3DEBB8B5217887130065207D /* TaxInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBB8B4217887130065207D /* TaxInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3D2AAF7A20B6646A00A907DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D2AAF8020B6649400A907DC /* YMYCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YMYCodeTextField.swift; sourceTree = "<group>"; };
 		3D2AAF8220B66B0900A907DC /* YMYCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YMYCodeView.swift; sourceTree = "<group>"; };
+		3DEBB8B4217887130065207D /* TaxInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				3D2AAF7020B6646A00A907DC /* ViewController.swift */,
 				3D2AAF8020B6649400A907DC /* YMYCodeTextField.swift */,
 				3D2AAF8220B66B0900A907DC /* YMYCodeView.swift */,
+				3DEBB8B4217887130065207D /* TaxInputView.swift */,
 				3D2AAF7220B6646A00A907DC /* Main.storyboard */,
 				3D2AAF7520B6646A00A907DC /* Assets.xcassets */,
 				3D2AAF7720B6646A00A907DC /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 				3D2AAF8120B6649400A907DC /* YMYCodeTextField.swift in Sources */,
 				3D2AAF7120B6646A00A907DC /* ViewController.swift in Sources */,
 				3D2AAF6F20B6646A00A907DC /* AppDelegate.swift in Sources */,
+				3DEBB8B5217887130065207D /* TaxInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

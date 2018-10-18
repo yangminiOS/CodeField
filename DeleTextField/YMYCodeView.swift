@@ -97,8 +97,8 @@ public class YMCodeView: UIView, keyInputTextFieldDelegate, UITextFieldDelegate 
     @objc func textFieldChange(_ textField: UITextField) {
         
         if(textField.text!.count > 1) {
-            let endIndex = textField.text!.index(textField.text!.startIndex, offsetBy: 1)
-            textField.text = String(textField.text![textField.text!.startIndex..<endIndex])
+            //let endIndex = textField.text!.index(textField.text!.startIndex, offsetBy: 1)
+            textField.text = "\(textField.text!.first!)"
         }
         
         firstTextField = textFields[index]
@@ -117,9 +117,7 @@ public class YMCodeView: UIView, keyInputTextFieldDelegate, UITextFieldDelegate 
                     delegate?.codeView(inputString)
                 }
                 isLastFill = true
-            }
-            
-            if(index >= 0 && index < (itemCount - 1)) {
+            }else if(index >= 0 && index < (itemCount - 1)) {
                 
                 index += 1
                 let line = lines[index]
