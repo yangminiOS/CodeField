@@ -21,7 +21,7 @@ public class YMCodeView: UIView, keyInputTextFieldDelegate, UITextFieldDelegate 
     public var itemWith: CGFloat = 30.0
     //item 到父视图的左右间隙  默认是0
     public var margin_LR: CGFloat = 0.0
-    
+    //item 的宽度
     public var titleSize:CGFloat = 20.0
     
     var textFields: [YMCodeTextField] = []
@@ -100,10 +100,9 @@ public class YMCodeView: UIView, keyInputTextFieldDelegate, UITextFieldDelegate 
             //let endIndex = textField.text!.index(textField.text!.startIndex, offsetBy: 1)
             textField.text = "\(textField.text!.first!)"
         }
-        
+        textField.isEnabled = false
         firstTextField = textFields[index]
         firstTextField?.isEnabled = true
-        textField.isEnabled = false
         firstTextField?.becomeFirstResponder()
     }
     
@@ -117,13 +116,18 @@ public class YMCodeView: UIView, keyInputTextFieldDelegate, UITextFieldDelegate 
                     delegate?.codeView(inputString)
                 }
                 isLastFill = true
+<<<<<<< HEAD
             }else if(index >= 0 && index < (itemCount - 1)) {
+=======
+            }else if (index >= 0 && index < (itemCount - 1) ){
+>>>>>>> 49d7ed931726f30d342a0744215b5a0527a1a6de
                 
                 index += 1
                 let line = lines[index]
                 line.backgroundColor = heightColor
                 firstLine = line
             }
+            
         }
         return true
     }
