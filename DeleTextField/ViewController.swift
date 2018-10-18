@@ -8,15 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController, YMCodeViewDelegate {
+class ViewController: UIViewController, TaxInputViewDelegate {
     
-    var codeView: YMCodeView!
+    var taxInputView: TaxInputView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let taxInputView = TaxInputView()
-        taxInputView.activeColor = UIColor.init(red: 245.0/255, green: 106.0/255, blue: 32.0/255, alpha: 1.0)
+        taxInputView = TaxInputView()
+        taxInputView.delegate = self
+        //taxInputView.activeColor = UIColor.init(red: 245.0/255, green: 106.0/255, blue: 32.0/255, alpha: 1.0)
         
         view.addSubview(taxInputView)
      
@@ -28,15 +29,6 @@ class ViewController: UIViewController, YMCodeViewDelegate {
         
     }
     
-    func test() {
-        
-        codeView = YMCodeView.init(count: 6, with: 30.0)
-        view.addSubview(codeView)
-        codeView.delegate = self
-        codeView.frame = CGRect.init(x: 20, y: 100, width: view.frame.width - 40, height: 31)
-        
-    }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,8 +37,12 @@ class ViewController: UIViewController, YMCodeViewDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //codeView.registFirst()
+        taxInputView.resignFirstResponder()
     }
-
+    
+    func taxInputViewCompleteInput(_ taxInputView: TaxInputView) {
+        print(taxInputView.text)
+    }
 
 }
 

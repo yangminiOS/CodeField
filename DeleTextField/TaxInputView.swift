@@ -21,6 +21,8 @@ import UIKit
 
 class TaxInputView: UIView, UIKeyInput {
     
+    
+    
     override var canBecomeFirstResponder: Bool {
         return true
     }
@@ -37,12 +39,16 @@ class TaxInputView: UIView, UIKeyInput {
     
     private lazy var numberSet = CharacterSet(charactersIn: "0123456789").inverted
     
-    var taxNum: Int {
-        return 6
+    var taxNum: Int = 6 {
+        didSet {
+            setNeedsDisplay()
+        }
     }
     
-    private var gapWidth: CGFloat {
-        return 5
+    private var gapWidth: CGFloat = 30 {
+        didSet {
+            setNeedsDisplay()
+        }
     }
     
     private var textAttr: [NSAttributedStringKey: Any] {
@@ -79,7 +85,9 @@ class TaxInputView: UIView, UIKeyInput {
     
     private var _textColor: UIColor?
     
-    private var _activeColor: UIColor?
+    private var _activeColor = UIColor.init(red: 255.0/255, green: 153.0/255, blue: 51/255, alpha: 1.0)
+    
+    private var _defaultColor = UIColor.black  //UIColor.init(red: 239.0/255, green: 239.0/255, blue: 244.0/255, alpha: 1.0)
     
     var font: UIFont {
         
@@ -108,7 +116,7 @@ class TaxInputView: UIView, UIKeyInput {
     var activeColor: UIColor {
         
         get {
-            return _activeColor ?? .blue
+            return _activeColor
         }
         
         set {
@@ -209,17 +217,13 @@ class TaxInputView: UIView, UIKeyInput {
         
         cursorView.removeFromSuperview()
         
-        let width = rect.width
-        
         let height = rect.height
         
-        let rectWidth = (width - 15 * gapWidth) / 16
+        let rectWidth: CGFloat = 30.0
         
         let y = height - 0.5
         
-        let centerY = height / 2
-        
-        let color = UIColor.gray.cgColor
+        let color = _defaultColor.cgColor
         
         let context = UIGraphicsGetCurrentContext()
         context?.setLineWidth(0.5)
@@ -231,36 +235,23 @@ class TaxInputView: UIView, UIKeyInput {
         
         let characterCount = text.count
         
-        for i in 0...taxNum {
+        for i in 0..<taxNum {
             
-            if i == 9 {
+           
                 
-                startPoint = CGPoint(x: CGFloat(i) * (rectWidth + gapWidth) + 2, y: centerY)
-                
-                endPoint = CGPoint(x: startPoint.x + rectWidth - 2, y: centerY)
-                
-            }else {
-                
-                startPoint = CGPoint(x: CGFloat(i) * (rectWidth + gapWidth), y: y)
-                
-                endPoint = CGPoint(x: startPoint.x + rectWidth, y: y)
-                
-            }
+            startPoint = CGPoint(x: CGFloat(i) * (rectWidth + gapWidth), y: y)
+            
+            endPoint = CGPoint(x: startPoint.x + rectWidth, y: y)
+            
             
             if isFirstResponder {
                 
-                var idx = characterCount
-                
-                if idx >= 9, idx < taxNum {
-                    idx = idx + 1
-                }
-                
-                context?.setStrokeColor(idx == i ? activeColor.cgColor : color)
+                context?.setStrokeColor(characterCount == i ? activeColor.cgColor : color)
                 
                 // 当文字个数小于最大值时添加光标
                 if characterCount < taxNum {
                     
-                    let x = rectWidth / 2 + CGFloat(idx) * (rectWidth + gapWidth)
+                    let x = rectWidth / 2 + CGFloat(characterCount) * (rectWidth + gapWidth)
                     
                     cursorView.frame = CGRect(x: x, y: 8, width: 2, height: height - CGFloat(16))
                     
@@ -273,6 +264,12 @@ class TaxInputView: UIView, UIKeyInput {
                 context?.setStrokeColor(color)
                 
             }
+            
+            context?.move(to: startPoint)
+            
+            context?.addLine(to: endPoint)
+            
+            context?.drawPath(using: .stroke)
             
             // 绘制文字
             if characterCount > 0, i < characterCount {
@@ -294,22 +291,6 @@ class TaxInputView: UIView, UIKeyInput {
                 str.draw(in: rect, withAttributes: textAttr)
                 
             }
-            
-            if i == 1 || i == 4 || i == 7 || i == 12 {
-                
-                let center = CGPoint(x: endPoint.x + gapWidth / 2, y: y)
-                
-                context?.addArc(center: center, radius: 0.8, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
-                
-                context?.drawPath(using: .fill)
-                
-            }
-            
-            context?.move(to: startPoint)
-            
-            context?.addLine(to: endPoint)
-            
-            context?.drawPath(using: .stroke)
             
         }
         
