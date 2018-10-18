@@ -116,12 +116,6 @@ public class YMCodeView: UIView, keyInputTextFieldDelegate, UITextFieldDelegate 
                     delegate?.codeView(inputString)
                 }
                 isLastFill = true
-<<<<<<< HEAD
-            }else if(index >= 0 && index < (itemCount - 1)) {
-=======
-            }else if (index >= 0 && index < (itemCount - 1) ){
->>>>>>> 49d7ed931726f30d342a0744215b5a0527a1a6de
-                
                 index += 1
                 let line = lines[index]
                 line.backgroundColor = heightColor
