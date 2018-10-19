@@ -1,7 +1,7 @@
 # CodeField
 常见的验证码输入组件
 
-1. 支持位验证码
+1. 支持验证码位数定义
 
 2. 可以自定义验证码数量、item宽度
 
@@ -12,9 +12,12 @@
 ###简单使用
 ```
 //初始化方法
-taxInputView = TaxInputView()
+let taxInputView = TaxInputView()
+
 taxInputView.delegate = self
+
 view.addSubview(taxInputView) 
+
 taxInputView.frame = CGRect.init(x: 20, y: 100, width: view.frame.width - 40, height: 35)
 
 
