@@ -1,7 +1,7 @@
 # CodeField
 常见的验证码输入组件
 
-1. 支持1-6位验证码
+1. 支持位验证码
 
 2. 可以自定义验证码数量、item宽度
 
@@ -17,6 +17,15 @@ taxInputView.delegate = self
 view.addSubview(taxInputView) 
 taxInputView.frame = CGRect.init(x: 20, y: 100, width: view.frame.width - 40, height: 35)
 
+
+//代理方法
+
+ @objc optional func taxInputViewDidChange(_ taxInputView: TaxInputView)
+    
+ @objc optional func taxInputViewBeginInput(_ taxInputView: TaxInputView)
+    
+ @objc optional func taxInputViewEndInput(_ taxInputView: TaxInputView)
+    
+ @objc optional func taxInputViewCompleteInput(_ taxInputView: TaxInputView)
 ```
 
-1. 对存在卡顿现象的优化
